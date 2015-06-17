@@ -28,35 +28,24 @@ class Trainer():
             yield set(i_group)
 
     def match_query_input(self):
-        #inputs = self.read_file(self.i_file)
         inputs = self.get_inputs()
-        q_group = self.get_query()
         container = []
-        for query_set in q_group:
-            for input_set in inputs:
+        for input_set in inputs:
+            q_group = self.get_query()
+            for query_set in q_group:
                 data = self.query_check(query_set, input_set)
                 if data != None:
-                    container.append(self.query_check(query_set, input_set))
-        """container = []
-        for i_group in inputs:
-            for q in q_group:
-                for item in q:
-                    if item in i_group:
-                        container.append(i_group)
+                    container.append(data)
 
-            container.append(i_group)
-        print len(container)"""
         #container = Counter(container).most_common()
         return self.output(container)
 
 
     def query_check(self, qlist, ilist):
         result = all([qs in ilist  for qs in qlist])
-            #result = [[x in ilist for x in q]for q in qlist]
-            #print result
         if result == True:
             new_words = ilist - qlist
-            return new_words
+            return list(new_words)
 
 
 
