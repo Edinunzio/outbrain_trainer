@@ -1,6 +1,7 @@
 __author__ = 'liz'
 
 import unittest
+
 from training.trainer import Trainer
 
 
@@ -31,6 +32,7 @@ class TestOutbrainTrainer(unittest.TestCase):
     def test_match_query_input(self):
         results = self.tr.match_query_input(self.i_file, self.q_file)
         self.assertEqual(type(results), str)
+
 
 if __name__ == '__main__':
     unittest.main()

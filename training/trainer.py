@@ -1,6 +1,5 @@
 from json import dumps
 from collections import Counter
-from itertools import groupby
 
 
 class Trainer():
@@ -9,6 +8,7 @@ class Trainer():
     >>> tr = Trainer()
     >>> print tr.match_query_input('data/query_groups.txt', 'data/input_groups.txt')
     """
+
     def __init__(self):
         pass
 
@@ -59,7 +59,7 @@ class Trainer():
 
         cnt = tuple(container)
         container = Counter(cnt)
-        m_c = container.most_common() # provides count with a minimum of 1
+        m_c = container.most_common()  # provides count with a minimum of 1
         res = []
         for q in qs:
             q_group_results = {}
@@ -79,7 +79,7 @@ class Trainer():
         :param ilist:
         :return: new words per query matched per input group <list>
         """
-        result = all([qs in ilist  for qs in qlist])
+        result = all([qs in ilist for qs in qlist])
         if result:
             new_words = ilist - qlist
             result = [word for word in new_words]
@@ -95,6 +95,7 @@ class Trainer():
         """
         result = dumps(dictionary, sort_keys=True)
         return result
+
 # uncomment below to run script
-#tr = Trainer()
-#print tr.match_query_input('data/query_groups.txt', 'data/input_groups.txt')
+tr = Trainer()
+print tr.match_query_input('data/query_groups.txt', 'data/input_groups.txt')
