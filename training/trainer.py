@@ -35,17 +35,23 @@ class Trainer():
             for query_set in q_group:
                 data = self.query_check(query_set, input_set)
                 if data != None:
-                    container.append(data)
+                    for d in data:
+                        container.append((d, tuple(query_set)))
+        x = tuple(container)
 
-        #container = Counter(container).most_common()
-        return self.output(container)
+        container = Counter(x)
+        m_c = container.most_common()
+        results = [{item[0][0]:item[1]}for item in m_c]
+
+        return self.output(results)
 
 
     def query_check(self, qlist, ilist):
         result = all([qs in ilist  for qs in qlist])
-        if result == True:
+        if result:
             new_words = ilist - qlist
-            return list(new_words)
+            result = [word for word in new_words]
+            return result
 
 
 
