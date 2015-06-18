@@ -95,6 +95,6 @@ class Trainer():
         """
         result = dumps(dictionary, sort_keys=True)
         return result
-
-tr = Trainer()
-print tr.match_query_input('data/query_groups.txt', 'data/input_groups.txt')
+# uncomment below to run script
+#tr = Trainer()
+#print tr.match_query_input('data/query_groups.txt', 'data/input_groups.txt')
