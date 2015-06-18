@@ -23,13 +23,8 @@ class TestOutbrainTrainer(unittest.TestCase):
         result = self.tr.output(data)
         self.assertEqual(type(result), str)
 
-    def test_get_query(self):
-        results = self.tr.get_query(self.q_file)
-        for r in results:
-            self.assertEqual(type(r), set)
-
-    def test_get_inputs(self):
-        results = self.tr.get_query(self.i_file)
+    def test_get_list(self):
+        results = self.tr.get_list(self.q_file)
         for r in results:
             self.assertEqual(type(r), set)
 
