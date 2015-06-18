@@ -97,5 +97,5 @@ class Trainer():
         return result
 
 # uncomment below to run script
-tr = Trainer()
-print tr.match_query_input('data/query_groups.txt', 'data/input_groups.txt')
+#tr = Trainer()
+#print tr.match_query_input('data/query_groups.txt', 'data/input_groups.txt')
